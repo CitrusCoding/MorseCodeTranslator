@@ -22,7 +22,6 @@ import dictFuncs
 
 #Variables
 keepGoing = True #flag variable
-#testScore = 0  #for future test function
 switchBack = False #track when keys and values are switched
 currentDict = dictFuncs.inputWords(
     open("MorseCode.csv"))  #turns csv into dictionary w/helper function
@@ -44,7 +43,7 @@ print(
 while (keepGoing):
     #print("")
     print("\nI want to: ")
-    taskChoice = input("options: translate/learn/exit\n") #lists options
+    taskChoice = input("options: translate/learn/practice/exit\n") #lists options
 
     #Translate
     if (taskChoice.lower() == "translate"):
@@ -56,7 +55,8 @@ while (keepGoing):
           
           #translate English to morse code
           if (whichTrans.lower() == "to morse" or whichTrans.lower() == "morse" or whichTrans.lower() == "english to morse code"):
-            
+            print("you are translating from English to morse code")
+
             #switch letters to keys and morse to values
             if (switchBack == False): 
               currentDict = dictFuncs.swapPair(currentDict)
@@ -72,6 +72,7 @@ while (keepGoing):
 
           #translate morse code to English
           elif (whichTrans.lower() == "to english" or whichTrans.lower() == "english" or whichTrans.lower() == "morse code to english"):
+            print("you are translating from morse code to English")
 
             #if the directory was switched to letters:morse switch it back to morse:letters
             if (switchBack):
@@ -107,7 +108,7 @@ while (keepGoing):
 
     #Learn
     if (taskChoice.lower() == "learn"):
-      print("\n")
+
       print("Morse code is a method of transmitting text using signals of light or sound.")
       print("It was developed by Samuel Morse and Alfred Vail.")
       print("To learn more about it's creation check out https://www.britannica.com/topic/Morse-Code\n")
@@ -135,7 +136,39 @@ while (keepGoing):
           print(currentDict[x] + " is " + x)
 
     #Practice
-    #if (taskChoice.lower() == "practice"):
+    if (taskChoice.lower() == "practice"):
+
+      correctAns = 0
+
+      #seperate dictionary into lists
+      morseLetters = list(currentDict.keys())
+      engLetters = list(currentDict.values())
+
+      #user interactions
+      print("You've entered practice mode")
+      print("How many questions would you like to be asked?")
+      quesNum = input("Number of questions: ")
+      print("What language would you like to write your answers in?")
+      inputLang = input("English/morse: ")
+
+      #check input validity
+      #if(isinstance(quesNum, int) == False):
+        #print("invalid number of questions, please enter an integer")
+        #^ this doesn't work but im going to bed so fix it later
+
+      if(inputLang.lower() == "english"):
+        inputLetters = engLetters; 
+
+      elif (inputLang.lower() == "morse" or inputLang == "morse code"):
+        inputLetters = morseLetters
+
+      else:
+        print("invalid language, please enter 'english' or 'morse'")
+
+      #actual testing goes here
+
+
+
 
 
     #learn function (type in a letter, be shown the morse equivalent and vice versa)
