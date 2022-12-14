@@ -16,6 +16,8 @@
 #note: do we want this program to have any visual elements? THis would have been a lot easier in html but it is possible with pygame I think - maybe make 2 versions with and without, just cause I can
 
 #BEGINNING OF PROGRAM 
+
+#Imports
 import dictFuncs
 
 #Variables
@@ -42,7 +44,7 @@ print(
 while (keepGoing):
     print("")
     print("\nI want to: ")
-    taskChoice = input("options: translate/exit\n") #lists options
+    taskChoice = input("options: translate/learn/exit\n") #lists options
 
     #Translate
     if (taskChoice.lower() == "translate"):
@@ -71,7 +73,7 @@ while (keepGoing):
           #translate morse code to English
           elif (whichTrans.lower() == "to english" or whichTrans.lower() == "english" or whichTrans.lower() == "morse code to english"):
 
-            #if the directory was switched to letters:morse switch it back
+            #if the directory was switched to letters:morse switch it back to morse:letters
             if (switchBack):
               currentDict = dictFuncs.swapPair(currentDict)
               switchBack = False; 
@@ -94,12 +96,22 @@ while (keepGoing):
             whichTrans = input("do you want to translate English to morse code, or morse code to English?\n")
             invalidTransInput = True
 
-        for x in transList:
+
+        #print translation 
+        for letter in transList:
             #check to see if character is valid
-            if x.upper() in currentDict.keys():
-                print(currentDict[x.upper()], end=" ")
+            if (letter.upper() in currentDict.keys()):
+                print(currentDict[letter.upper()], end=" ")
             else:
                 print("?", end=" ")
+
+    #Learn
+    if (taskChoice.lower() == "learn"):
+      for x in currentDict:
+        if(x == "/"):
+          print(x + " indicates the blank space between words")
+        else:
+          print(currentDict[x] + " is " + x)
 
     #learn function (type in a letter, be shown the morse equivalent and vice versa)
 
@@ -108,6 +120,6 @@ while (keepGoing):
     #learn and test should be very similar I think
 
     if (taskChoice.lower() == 'exit'):
-        keepGoing = False
+      keepGoing = False
 
 #END OF PROGRAM
