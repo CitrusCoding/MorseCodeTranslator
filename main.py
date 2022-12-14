@@ -21,6 +21,8 @@ import dictFuncs
 #Variables
 keepGoing = True #flag variable
 #testScore = 0  #for future test function
+transPhrase = "test"
+switchBack = False #know when to switch key and value
 currentDict = dictFuncs.inputWords(
     open("MorseCode.csv"))  #turns csv into dictionary w/helper function
 #if you want to add more codes aside from morse then make a folder for them and change it to open("folder/code.csv")
@@ -55,7 +57,9 @@ while (keepGoing):
           if (whichTrans.lower() == "to morse" or whichTrans.lower() == "morse" or whichTrans.lower() == "english to morse code"):
             
             #switch letters to keys
-            currentDict = dictFuncs.swapPair(currentDict)
+            if (switchBack == False): 
+              currentDict = dictFuncs.swapPair(currentDict)
+              switchBack = True; 
 
             #take user input
             transPhrase = input("Input the word/phrase you want translated:\n")
@@ -67,7 +71,12 @@ while (keepGoing):
 
           #translate morse code to English
           elif (whichTrans.lower() == "to english" or whichTrans.lower() == "english" or whichTrans.lower() == "morse code to english"):
-            
+
+            #switch letters to keys
+            if (switchBack == True):
+              currentDict = dictFuncs.swapPair(currentDict)
+              switchBack = False; 
+
             #take user input
             transPhrase = input("Input the word/phrase you want translated:\n")
             
