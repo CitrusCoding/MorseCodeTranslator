@@ -15,7 +15,7 @@
 #- . = dot, - = dash, / = space between words
 #note: do we want this program to have any visual elements? THis would have been a lot easier in html but it is possible with pygame I think - maybe make 2 versions with and without, just cause I can
 
-#BEGINNING OF PROGRAM
+#BEGINNING OF PROGRAM 
 import dictFuncs
 
 #Variables
