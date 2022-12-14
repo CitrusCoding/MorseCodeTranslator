@@ -42,7 +42,7 @@ print(
 
 #run the program until the user decides to close it by typing "exit"
 while (keepGoing):
-    print("")
+    #print("")
     print("\nI want to: ")
     taskChoice = input("options: translate/learn/exit\n") #lists options
 
@@ -107,11 +107,36 @@ while (keepGoing):
 
     #Learn
     if (taskChoice.lower() == "learn"):
+      print("\n")
+      print("Morse code is a method of transmitting text using signals of light or sound.")
+      print("It was developed by Samuel Morse and Alfred Vail.")
+      print("To learn more about it's creation check out https://www.britannica.com/topic/Morse-Code\n")
+
+      print("TERMINOLOGY:")
+      print(". is called a dot\n- is called a dash.\n")
+      print("dots represent shorter beeps or flashes of light, while dashes represent longer ones.\n")
+      
+      print("RULES:")
+      print("The length of a dot is one unit.")
+      print("The length of a dash is three unit.")
+      print("The space between each dot or dash is one unit.")
+      print("The space between letters is 3 units.")
+      print("The space between words is 7 units.\n")
+
+      print("In text form, there is no space between dots and dashes.")
+      print("There is one space between letters, and a slash (/) is used to represent spaces between words\n")
+
+      print("List of Letters:")
+      #print all letters
       for x in currentDict:
         if(x == "/"):
           print(x + " indicates the blank space between words")
         else:
           print(currentDict[x] + " is " + x)
+
+    #Practice
+    #if (taskChoice.lower() == "practice"):
+
 
     #learn function (type in a letter, be shown the morse equivalent and vice versa)
 
@@ -120,6 +145,6 @@ while (keepGoing):
     #learn and test should be very similar I think
 
     if (taskChoice.lower() == 'exit'):
-      keepGoing = False
+      keepGoing = False #exit loop
 
 #END OF PROGRAM
